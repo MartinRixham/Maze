@@ -13,4 +13,10 @@ public class Start implements MazeSquare
 	{
 		return true;
 	}
+
+	@Override
+	public boolean alreadyAsked()
+	{
+		return false;
+	}
 }

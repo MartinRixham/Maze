@@ -8,6 +8,8 @@ public class Space implements MazeSquare
 
 	private Boolean isGood = null;
 
+	private boolean alreadyAsked = false;
+
 	public Space(MazeSquare[][] mazeGrid)
 	{
 		this.mazeGrid = mazeGrid;
@@ -25,8 +27,10 @@ public class Space implements MazeSquare
 		}
 	}
 
+	// A space is good if it lies on a direct path between the start and the end.
 	public  boolean isGood(Space caller)
 	{
+		// If this has already been calculated don't recalculate.
 		if (this.isGood != null)
 		{
 			if (this.isGood)
@@ -39,6 +43,8 @@ public class Space implements MazeSquare
 			}
 		}
 
+		this.alreadyAsked = true;
+
 		Coordinate coordinate = this.getCoordinate();
 
 		Collection<MazeSquare> neighbours =
@@ -48,11 +54,14 @@ public class Space implements MazeSquare
 
 		for (MazeSquare neighbour : neighbours)
 		{
-			if (neighbour != caller && !neighbour.isGood(this))
+			if (neighbour != caller &&
+				(neighbour.alreadyAsked() || !neighbour.isGood(this)))
 			{
 				badNeighbourCount += 1;
 			}
 		}
+
+		this.alreadyAsked = false;
 
 		if (badNeighbourCount > 2)
 		{
@@ -80,5 +89,11 @@ public class Space implements MazeSquare
 		}
 
 		throw new RuntimeException("The space is not in the maze grid.");
+	}
+
+	@Override
+	public boolean alreadyAsked()
+	{
+		return this.alreadyAsked;
 	}
 }

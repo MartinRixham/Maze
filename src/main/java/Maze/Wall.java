@@ -13,4 +13,10 @@ public class Wall implements MazeSquare
 	{
 		return false;
 	}
+
+	@Override
+	public boolean alreadyAsked()
+	{
+		return false;
+	}
 }

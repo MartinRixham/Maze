@@ -13,4 +13,10 @@ public class End implements MazeSquare
 	{
 		return true;
 	}
+
+	@Override
+	public boolean alreadyAsked()
+	{
+		return false;
+	}
 }

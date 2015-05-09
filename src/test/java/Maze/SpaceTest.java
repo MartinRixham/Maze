@@ -149,4 +149,42 @@ public class SpaceTest
 
 		assertTrue(mazeSquare.isGood(mazeSquare));
 	}
+
+	@Test
+	public void isGood_spaceInAMazeWithALoop_returnsFalse()
+	{
+		MazeSquare[][] mazeGrid = new MazeSquare[4][6];
+
+		Space mazeSquare = new Space(mazeGrid);
+
+		mazeGrid[0][0] = new Wall();
+		mazeGrid[0][1] = new Wall();
+		mazeGrid[0][2] = new Wall();
+		mazeGrid[0][3] = new Wall();
+		mazeGrid[0][4] = new Wall();
+		mazeGrid[0][5] = new Wall();
+
+		mazeGrid[1][0] = new Wall();
+		mazeGrid[1][1] = new Start();
+		mazeGrid[1][2] = mazeSquare;
+		mazeGrid[1][3] = new Space(mazeGrid);
+		mazeGrid[1][4] = new Wall();
+		mazeGrid[1][5] = new Wall();
+
+		mazeGrid[2][0] = new Wall();
+		mazeGrid[2][1] = new Wall();
+		mazeGrid[2][2] = new Space(mazeGrid);
+		mazeGrid[2][3] = new Space(mazeGrid);
+		mazeGrid[2][4] = new End();
+		mazeGrid[2][5] = new Wall();
+
+		mazeGrid[3][0] = new Wall();
+		mazeGrid[3][1] = new Wall();
+		mazeGrid[3][2] = new Wall();
+		mazeGrid[3][3] = new Wall();
+		mazeGrid[3][4] = new Wall();
+		mazeGrid[3][5] = new Wall();
+
+		assertTrue(mazeSquare.isGood(mazeSquare));
+	}
 }
