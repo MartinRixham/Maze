@@ -17,7 +17,7 @@ public class Maze
 		{
 			for (int j = 0; j < mazeGrid[i].length; j++)
 			{
-				solutionGrid.append(mazeGrid[i][j].getCharacter());
+				solutionGrid.append(mazeGrid[j][i].getCharacter());
 			}
 
 			solutionGrid.append('\n');

@@ -52,20 +52,20 @@ public class MazeFile
 
 				if (startPosition.isAt(j, i - 3))
 				{
-					mazeGrid[i - 3][j] = new Start();
+					mazeGrid[j][i - 3] = new Start();
 				}
 				else if (endPosition.isAt(j, i - 3))
 				{
-					mazeGrid[i - 3][j] = new End();
+					mazeGrid[j][i - 3] = new End();
 				}
 				else if (character == '0')
 				{
-					mazeGrid[i - 3][j] =
+					mazeGrid[j][i - 3] =
 						new Space(mazeGrid);
 				}
 				else if (character == '1')
 				{
-					mazeGrid[i - 3][j] = new Wall();
+					mazeGrid[j][i - 3] = new Wall();
 				}
 			}
 		}
