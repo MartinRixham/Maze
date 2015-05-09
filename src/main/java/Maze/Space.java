@@ -6,7 +6,9 @@ public class Space implements MazeSquare
 {
 	private MazeSquare[][] mazeGrid;
 
-	private Boolean isGood = null;
+	private boolean isBad = false;
+
+	private boolean isGood = false;
 
 	private boolean alreadyAsked = false;
 
@@ -31,16 +33,14 @@ public class Space implements MazeSquare
 	public  boolean isGood(Space caller)
 	{
 		// If this has already been calculated don't recalculate.
-		if (this.isGood != null)
+		if (this.isBad)
 		{
-			if (this.isGood)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return false;
+		}
+
+		if (this.isGood)
+		{
+			return true;
 		}
 
 		this.alreadyAsked = true;
@@ -65,12 +65,15 @@ public class Space implements MazeSquare
 
 		if (badNeighbourCount > 2)
 		{
-			this.isGood = false;
+			this.isBad = true;
 
 			return false;
 		}
 
-		this.isGood = true;
+		if (caller == this)
+		{
+			this.isGood = true;
+		}
 
 		return true;
 	}
