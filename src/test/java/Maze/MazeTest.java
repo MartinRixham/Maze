@@ -21,12 +21,15 @@ public class MazeTest
 
 		Coordinate startPosition = new Coordinate(1, 1);
 
-		Maze maze = new Maze(mazeGrid, startPosition);
+		Coordinate endPosition = new Coordinate(3, 3);
+
+		Maze maze =
+			new Maze(mazeGrid, startPosition, endPosition);
 
 		String solution = maze.solve();
 
 		assertEquals(
-			"#####\n#S###\n## ##\n### #\n#####\n",
+			"#####\n#S###\n## ##\n###E#\n#####\n",
 			solution
 		);
 	}

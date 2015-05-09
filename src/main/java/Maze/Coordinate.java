@@ -12,13 +12,8 @@ public class Coordinate
 		this.y = y;
 	}
 
-	public int x()
+	public boolean isAt(int x, int y)
 	{
-		return this.x;
-	}
-
-	public int y()
-	{
-		return this.y;
+		return x == this.x && y == this.y;
 	}
 }
