@@ -15,14 +15,34 @@ public class MazeFile
 	{
 		List<String> fileLines = this.textFile.read();
 
-		String lines = "";
+		String dimensionsLine = fileLines.get(0);
 
-		for (String line : fileLines)
+		String[] dimensions = dimensionsLine.split(" ");
+
+		int height = Integer.parseInt(dimensions[0]);
+		int width = Integer.parseInt(dimensions[1]);
+
+		boolean[][] mazeGrid = new boolean[height][width];
+
+		for (int i = 3; i < fileLines.size(); i++)
 		{
-			lines = lines.concat(line);
-			lines = lines.concat("\n");
+			String line = fileLines.get(i).replaceAll(" ", "");
+
+			for (int j = 0; j < line.length(); j++)
+			{
+				char character = line.charAt(j);
+
+				if (character == '1')
+				{
+					mazeGrid[i - 3][j] = true;
+				}
+				else if (character == '0')
+				{
+					mazeGrid[i - 3][j] = false;
+				}
+			}
 		}
 
-		return new Maze(lines);
+		return new Maze(mazeGrid);
 	}
 }

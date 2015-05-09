@@ -12,6 +12,6 @@ public class Main
 
 		String solution = maze.solve();
 
-		System.out.println(solution);
+		System.out.print(solution);
 	}
 }
