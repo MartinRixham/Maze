@@ -4,18 +4,10 @@ public class Maze
 {
 	private MazeSquare[][] mazeGrid;
 
-	private Coordinate startPosition;
-
-	private Coordinate endPosition;
-
 	public Maze(
-		MazeSquare[][] mazeGrid,
-		Coordinate startPosition,
-		Coordinate endPosition)
+		MazeSquare[][] mazeGrid)
 	{
 		this.mazeGrid = mazeGrid;
-		this.startPosition = startPosition;
-		this.endPosition = endPosition;
 	}
 
 	public String solve()
@@ -26,18 +18,7 @@ public class Maze
 		{
 			for (int j = 0; j < mazeGrid[i].length; j++)
 			{
-				if (startPosition.isAt(j, i))
-				{
-					solutionGrid.append('S');
-				}
-				else if (endPosition.isAt(j, i))
-				{
-					solutionGrid.append('E');
-				}
-				else
-				{
-					solutionGrid.append(mazeGrid[i][j].getCharacter());
-				}
+				solutionGrid.append(mazeGrid[i][j].getCharacter());
 			}
 
 			solutionGrid.append('\n');

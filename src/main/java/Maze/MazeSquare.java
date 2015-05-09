@@ -2,22 +2,18 @@ package Maze;
 
 public class MazeSquare
 {
-	public boolean isWall;
+	private SquareType squareType;
 
-	public MazeSquare(boolean isWall)
+	private MazeSquare[][] mazeGrid;
+
+	public MazeSquare(SquareType squareType, MazeSquare[][] mazeGrid)
 	{
-		this.isWall = isWall;
+		this.squareType = squareType;
+		this.mazeGrid = mazeGrid;
 	}
 
 	public char getCharacter()
 	{
-		if (isWall)
-		{
-			return '#';
-		}
-		else
-		{
-			return ' ';
-		}
+		return this.squareType.toCharacter();
 	}
 }
