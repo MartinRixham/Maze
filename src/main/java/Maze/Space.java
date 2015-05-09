@@ -6,6 +6,8 @@ public class Space implements MazeSquare
 {
 	private MazeSquare[][] mazeGrid;
 
+	private Boolean isGood = null;
+
 	public Space(MazeSquare[][] mazeGrid)
 	{
 		this.mazeGrid = mazeGrid;
@@ -25,6 +27,18 @@ public class Space implements MazeSquare
 
 	public  boolean isGood(Space caller)
 	{
+		if (this.isGood != null)
+		{
+			if (this.isGood)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
 		Coordinate coordinate = this.getCoordinate();
 
 		Collection<MazeSquare> neighbours =
@@ -42,8 +56,12 @@ public class Space implements MazeSquare
 
 		if (badNeighbourCount > 2)
 		{
+			this.isGood = false;
+
 			return false;
 		}
+
+		this.isGood = true;
 
 		return true;
 	}
