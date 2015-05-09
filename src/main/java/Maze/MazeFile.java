@@ -22,25 +22,25 @@ public class MazeFile
 		int height = Integer.parseInt(dimensions[0]);
 		int width = Integer.parseInt(dimensions[1]);
 
-		MazeSquare[][] mazeGrid = new MazeSquare[height][width];
+		MazeSquare[][] mazeGrid = new MazeSquare[width][height];
 
 		String startPositionLine = fileLines.get(1);
 
 		String[] startCoordinate = startPositionLine.split(" ");
 
 		Coordinate startPosition =
-				new Coordinate(
-						Integer.parseInt(startCoordinate[0]),
-						Integer.parseInt(startCoordinate[1]));
+			new Coordinate(
+				Integer.parseInt(startCoordinate[1]),
+				Integer.parseInt(startCoordinate[0]));
 
 		String endPositionLine = fileLines.get(2);
 
 		String[] endCoordinate = endPositionLine.split(" ");
 
 		Coordinate endPosition =
-				new Coordinate(
-						Integer.parseInt(endCoordinate[0]),
-						Integer.parseInt(endCoordinate[1]));
+			new Coordinate(
+				Integer.parseInt(endCoordinate[1]),
+				Integer.parseInt(endCoordinate[0]));
 
 		for (int i = 3; i < fileLines.size(); i++)
 		{

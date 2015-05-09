@@ -7,4 +7,10 @@ public class End implements MazeSquare
 	{
 		return 'E';
 	}
+
+	@Override
+	public boolean isGood(Space caller)
+	{
+		return true;
+	}
 }

@@ -27,13 +27,18 @@ public class CoordinateTest
 		Integer[][] grid =
 			new Integer[][]
 			{
-				new Integer[] { 1, 2, 3 },
-				new Integer[] { 4, 5, 6 },
-				new Integer[] { 7, 8, 9 },
+				new Integer[] { 0, 1, 0 },
+				new Integer[] { 1, 9, 1 },
+				new Integer[] { 0, 1, 0 },
 			};
 
 		Collection<Integer> neighbours = coordinate.getNeighbours(grid);
 
 		assertEquals(4, neighbours.size());
+
+		for (Integer neighbour : neighbours)
+		{
+			assertEquals(new Integer(1), neighbour);
+		}
 	}
 }

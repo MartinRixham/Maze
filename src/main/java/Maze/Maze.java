@@ -13,9 +13,9 @@ public class Maze
 	{
 		StringBuilder solutionGrid = new StringBuilder();
 
-		for (int i = 0; i < mazeGrid.length; i++)
+		for (int i = 0; i < mazeGrid[0].length; i++)
 		{
-			for (int j = 0; j < mazeGrid[i].length; j++)
+			for (int j = 0; j < mazeGrid.length; j++)
 			{
 				solutionGrid.append(mazeGrid[j][i].getCharacter());
 			}

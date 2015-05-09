@@ -13,20 +13,39 @@ public class Space implements MazeSquare
 
 	public char getCharacter()
 	{
+		if (this.isGood(this))
+		{
+			return 'X';
+		}
+		else
+		{
+			return ' ';
+		}
+	}
+
+	public  boolean isGood(Space caller)
+	{
 		Coordinate coordinate = this.getCoordinate();
 
 		Collection<MazeSquare> neighbours =
 			coordinate.getNeighbours(this.mazeGrid);
 
+		int badNeighbourCount = 0;
+
 		for (MazeSquare neighbour : neighbours)
 		{
-			if (neighbour instanceof Start)
+			if (neighbour != caller && !neighbour.isGood(this))
 			{
-				return 'X';
+				badNeighbourCount += 1;
 			}
 		}
 
-		return ' ';
+		if (badNeighbourCount > 2)
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 	private Coordinate getCoordinate()
@@ -37,7 +56,7 @@ public class Space implements MazeSquare
 			{
 				if (mazeGrid[i][j] == this)
 				{
-					return new Coordinate(j, i);
+					return new Coordinate(i , j);
 				}
 			}
 		}

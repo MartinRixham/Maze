@@ -7,4 +7,10 @@ public class Wall implements MazeSquare
 	{
 		return '#';
 	}
+
+	@Override
+	public boolean isGood(Space caller)
+	{
+		return false;
+	}
 }
