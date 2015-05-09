@@ -22,7 +22,7 @@ public class MazeFile
 		int height = Integer.parseInt(dimensions[0]);
 		int width = Integer.parseInt(dimensions[1]);
 
-		boolean[][] mazeGrid = new boolean[height][width];
+		MazeSquare[][] mazeGrid = new MazeSquare[height][width];
 
 		for (int i = 3; i < fileLines.size(); i++)
 		{
@@ -34,11 +34,11 @@ public class MazeFile
 
 				if (character == '1')
 				{
-					mazeGrid[i - 3][j] = true;
+					mazeGrid[i - 3][j] = new MazeSquare(true);
 				}
 				else if (character == '0')
 				{
-					mazeGrid[i - 3][j] = false;
+					mazeGrid[i - 3][j] = new MazeSquare(false);
 				}
 			}
 		}

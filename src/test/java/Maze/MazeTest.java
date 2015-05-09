@@ -9,14 +9,49 @@ public class MazeTest
 	@Test
 	public void solve_trivialMaze_returnsSolution()
 	{
-		boolean[][] mazeGrid =
-			new boolean[][]
+		MazeSquare[][] mazeGrid =
+			new MazeSquare[][]
 			{
-				new boolean[] { true, true, true, true, true },
-				new boolean[] { true, false, true, true, true },
-				new boolean[] { true, true, false, true, true },
-				new boolean[] { true, true, true, false, true },
-				new boolean[] { true, true, true, true, true }
+				new MazeSquare[]
+					{
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(true)
+					},
+				new MazeSquare[]
+					{
+						new MazeSquare(true),
+						new MazeSquare(false),
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(true)
+					},
+				new MazeSquare[]
+					{
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(false),
+						new MazeSquare(true),
+						new MazeSquare(true)
+					},
+				new MazeSquare[]
+					{
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(false),
+						new MazeSquare(true)
+					},
+				new MazeSquare[]
+					{
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(true),
+						new MazeSquare(true)
+					}
 			};
 
 		Coordinate startPosition = new Coordinate(1, 1);

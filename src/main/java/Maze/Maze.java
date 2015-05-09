@@ -2,14 +2,14 @@ package Maze;
 
 public class Maze
 {
-	private boolean[][] mazeGrid;
+	private MazeSquare[][] mazeGrid;
 
 	private Coordinate startPosition;
 
 	private Coordinate endPosition;
 
 	public Maze(
-		boolean[][] mazeGrid,
+		MazeSquare[][] mazeGrid,
 		Coordinate startPosition,
 		Coordinate endPosition)
 	{
@@ -34,13 +34,9 @@ public class Maze
 				{
 					solutionGrid.append('E');
 				}
-				else if (mazeGrid[i][j])
-				{
-					solutionGrid.append('#');
-				}
 				else
 				{
-					solutionGrid.append(' ');
+					solutionGrid.append(mazeGrid[i][j].getCharacter());
 				}
 			}
 
