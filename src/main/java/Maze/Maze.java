@@ -4,8 +4,7 @@ public class Maze
 {
 	private MazeSquare[][] mazeGrid;
 
-	public Maze(
-		MazeSquare[][] mazeGrid)
+	public Maze(MazeSquare[][] mazeGrid)
 	{
 		this.mazeGrid = mazeGrid;
 	}

@@ -52,23 +52,20 @@ public class MazeFile
 
 				if (startPosition.isAt(j, i - 3))
 				{
-					mazeGrid[i - 3][j] =
-							new MazeSquare(SquareType.START, mazeGrid);
+					mazeGrid[i - 3][j] = new Start();
 				}
 				else if (endPosition.isAt(j, i - 3))
 				{
-					mazeGrid[i - 3][j] =
-							new MazeSquare(SquareType.END, mazeGrid);
+					mazeGrid[i - 3][j] = new End();
 				}
 				else if (character == '0')
 				{
 					mazeGrid[i - 3][j] =
-						new MazeSquare(SquareType.SPACE, mazeGrid);
+						new Space(mazeGrid);
 				}
 				else if (character == '1')
 				{
-					mazeGrid[i - 3][j] =
-						new MazeSquare(SquareType.WALL, mazeGrid);
+					mazeGrid[i - 3][j] = new Wall();
 				}
 			}
 		}
