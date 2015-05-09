@@ -1,2 +1,2 @@
 # Maze
-A 2D maze solver
+A 2D maze solver.
