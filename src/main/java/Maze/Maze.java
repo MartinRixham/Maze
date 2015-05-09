@@ -4,9 +4,12 @@ public class Maze
 {
 	private boolean[][] mazeGrid;
 
-	public Maze(boolean[][] mazeGrid)
+	private Coordinate startPosition;
+
+	public Maze(boolean[][] mazeGrid, Coordinate startPosition)
 	{
 		this.mazeGrid = mazeGrid;
+		this.startPosition = startPosition;
 	}
 
 	public String solve()
@@ -17,7 +20,11 @@ public class Maze
 		{
 			for (int j = 0; j < mazeGrid[i].length; j++)
 			{
-				if (mazeGrid[i][j])
+				if (startPosition.x() == j && startPosition.y() == i)
+				{
+					solutionGrid.append('S');
+				}
+				else if (mazeGrid[i][j])
 				{
 					solutionGrid.append('#');
 				}

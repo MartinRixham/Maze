@@ -43,6 +43,15 @@ public class MazeFile
 			}
 		}
 
-		return new Maze(mazeGrid);
+		String startPositionline = fileLines.get(1);
+
+		String[] startCoordinate = startPositionline.split(" ");
+
+		Coordinate startPosition =
+			new Coordinate(
+				Integer.parseInt(startCoordinate[0]),
+				Integer.parseInt(startCoordinate[1]));
+
+		return new Maze(mazeGrid, startPosition);
 	}
 }
