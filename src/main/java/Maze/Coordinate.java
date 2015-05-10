@@ -27,11 +27,6 @@ public class Coordinate
 
 		Collection<T> neighbours = new ArrayList<T>();
 
-		if (x > 0)
-		{
-			neighbours.add(grid[x - 1][y]);
-		}
-
 		if (grid.length > x + 1)
 		{
 			neighbours.add(grid[x + 1][y]);
@@ -40,6 +35,11 @@ public class Coordinate
 		if (y > 0)
 		{
 			neighbours.add(grid[x][y - 1]);
+		}
+
+		if (x > 0)
+		{
+			neighbours.add(grid[x - 1][y]);
 		}
 
 		if (grid.length > x && grid[x].length > y + 1)
