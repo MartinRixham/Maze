@@ -1,23 +1,19 @@
-package Maze;
+package maze;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class StartTest
+public class WallTest
 {
 	@Test
-	public void getCharacter_startSquare_returnsS()
+	public void getCharacter_wallSquare_returnsHash()
 	{
 		MazeSquare[][] mazeGrid = new MazeSquare[1][1];
-
-		MazeSquare mazeSquare = new Start();
-
+		MazeSquare mazeSquare = new Wall();
 		mazeGrid[0][0] = mazeSquare;
-
 		char character = mazeSquare.getCharacter();
 
-		assertEquals('S', character);
+		assertEquals('#', character);
 	}
-
 }

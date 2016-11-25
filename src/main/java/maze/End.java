@@ -1,11 +1,11 @@
-package Maze;
+package maze;
 
-public class Start implements MazeSquare
+public class End implements MazeSquare
 {
 	@Override
 	public char getCharacter()
 	{
-		return 'S';
+		return 'E';
 	}
 
 	@Override

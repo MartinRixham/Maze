@@ -1,4 +1,4 @@
-package Maze;
+package maze;
 
 import java.util.ArrayList;
 import java.util.Collection;

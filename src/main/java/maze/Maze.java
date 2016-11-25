@@ -1,4 +1,4 @@
-package Maze;
+package maze;
 
 public class Maze
 {
@@ -11,18 +11,18 @@ public class Maze
 
 	public String solve()
 	{
-		StringBuilder solutionGrid = new StringBuilder();
+		String solutionGrid = "";
 
 		for (int i = 0; i < mazeGrid[0].length; i++)
 		{
 			for (int j = 0; j < mazeGrid.length; j++)
 			{
-				solutionGrid.append(mazeGrid[j][i].getCharacter());
+				solutionGrid += mazeGrid[j][i].getCharacter();
 			}
 
-			solutionGrid.append('\n');
+			solutionGrid += '\n';
 		}
 
-		return solutionGrid.toString();
+		return solutionGrid;
 	}
 }

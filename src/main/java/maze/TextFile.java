@@ -1,4 +1,4 @@
-package Maze;
+package maze;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -31,7 +31,7 @@ public class TextFile
 
 		String fileLine;
 
-		List<String> fileLines = new ArrayList<String>();
+		List<String> fileLines = new ArrayList<>();
 
 		try
 		{

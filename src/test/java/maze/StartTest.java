@@ -1,22 +1,23 @@
-package Maze;
+package maze;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class EndTest
+public class StartTest
 {
 	@Test
-	public void getCharacter_endSquare_returnsE()
+	public void getCharacter_startSquare_returnsS()
 	{
 		MazeSquare[][] mazeGrid = new MazeSquare[1][1];
 
-		MazeSquare mazeSquare = new End();
+		MazeSquare mazeSquare = new Start();
 
 		mazeGrid[0][0] = mazeSquare;
 
 		char character = mazeSquare.getCharacter();
 
-		assertEquals('E', character);
+		assertEquals('S', character);
 	}
+
 }

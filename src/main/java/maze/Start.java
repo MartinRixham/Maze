@@ -1,17 +1,17 @@
-package Maze;
+package maze;
 
-public class Wall implements MazeSquare
+public class Start implements MazeSquare
 {
 	@Override
 	public char getCharacter()
 	{
-		return '#';
+		return 'S';
 	}
 
 	@Override
 	public boolean isGood(Space caller)
 	{
-		return false;
+		return true;
 	}
 
 	@Override
