@@ -17,6 +17,7 @@ public class Space implements MazeSquare
 		this.mazeGrid = mazeGrid;
 	}
 
+	@Override
 	public char getCharacter()
 	{
 		if (this.isGood(this))
@@ -30,7 +31,8 @@ public class Space implements MazeSquare
 	}
 
 	// A space is good if it lies on a direct path between the start and the end.
-	public  boolean isGood(Space caller)
+	@Override
+	public boolean isGood(Space caller)
 	{
 		// If this has already been calculated don't recalculate.
 		if (this.isBad)
@@ -44,6 +46,27 @@ public class Space implements MazeSquare
 		}
 
 		this.alreadyAsked = true;
+
+		int badNeighbourCount = this.getBadNeighbourCount(caller);
+
+		this.alreadyAsked = false;
+
+		if (badNeighbourCount > 2)
+		{
+			this.isBad = true;
+
+			return false;
+		}
+
+		if (caller == this)
+		{
+			this.isGood = true;
+		}
+
+		return true;
+	}
+
+	private int getBadNeighbourCount(Space caller) {
 
 		Coordinate coordinate = this.getCoordinate();
 
@@ -61,21 +84,7 @@ public class Space implements MazeSquare
 			}
 		}
 
-		this.alreadyAsked = false;
-
-		if (badNeighbourCount > 2)
-		{
-			this.isBad = true;
-
-			return false;
-		}
-
-		if (caller == this)
-		{
-			this.isGood = true;
-		}
-
-		return true;
+		return badNeighbourCount;
 	}
 
 	private Coordinate getCoordinate()

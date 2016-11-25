@@ -15,11 +15,6 @@ public class Coordinate
 		this.y = y;
 	}
 
-	public boolean isAt(int x, int y)
-	{
-		return x == this.x && y == this.y;
-	}
-
 	public <T> Collection<T> getNeighbours(T[][] grid)
 	{
 		int x = this.x;
