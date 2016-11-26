@@ -20,7 +20,7 @@ public class Coordinate
 		int x = this.x;
 		int y = this.y;
 
-		Collection<T> neighbours = new ArrayList<T>();
+		Collection<T> neighbours = new ArrayList<>();
 
 		if (grid.length > x + 1)
 		{

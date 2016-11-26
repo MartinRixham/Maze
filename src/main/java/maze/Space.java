@@ -89,6 +89,8 @@ public class Space implements MazeSquare
 
 	private Coordinate getCoordinate()
 	{
+		MazeSquare[][] mazeGrid = this.mazeGrid;
+
 		for (int i = 0; i < mazeGrid.length; i++)
 		{
 			for (int j = 0; j < mazeGrid[i].length; j++)
