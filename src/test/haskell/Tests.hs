@@ -25,3 +25,15 @@ specs = describe "maze" $ do
     it "spaces" $
       solve (Maze ["S E"])
       `shouldBe` "SXE\n"
+
+    -- it "bad spaces" $
+    --   solve (Maze ["SE# "])
+    --   `shouldBe` "SE# \n"
+
+    it "Start is good" $
+      isGood (Maze ["SE"]) 0 0
+      `shouldBe` True
+
+    it "End is good" $
+      isGood (Maze ["ES"]) 0 0
+      `shouldBe` True
