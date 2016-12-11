@@ -55,13 +55,11 @@ any2 (b:bs) = if b then any id bs else any2 bs
 isGood ::  Maze -> (Int, Int) -> (Int, Int) -> Bool
 isGood maze (x, y) (xCaller, yCaller)
   | not $ isInside (x,y) = False
-  | square == Start    = True
-  | square == End      = True
-  | square == Wall     = False
-  | (x, y-1) == (xCaller, yCaller) = isGood maze (x,y+1) (x, y)
-  | (x, y+1) == (xCaller, yCaller) = isGood maze (x,y-1) (x, y)
-  | otherwise = any2 $ map (\p -> isGood maze p (x,y)) neighbours
+  | square == Wall       = False
+  | square == Start      = True
+  | square == End        = True
+  | otherwise = any2 $ map (\p -> p == (xCaller, yCaller) || isGood maze p (x,y)) neighbours
   where
     square = getMazeSquare maze (x,y)
-    neighbours = filter isInside [(x, y-1), (x, y+1), (x-1, y), (x+1, y)]
+    neighbours = filter (\p -> isInside p) [(x, y-1), (x, y+1), (x-1, y), (x+1, y)]
     isInside (x, y) = 0 <= x && x < height maze && 0 <= y && y < width maze

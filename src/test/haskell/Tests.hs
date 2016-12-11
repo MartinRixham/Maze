@@ -57,3 +57,11 @@ specs = describe "maze" $ do
     it "Solve 2D maze" $
       isGood (Maze [[Start, Space, End], [Wall, Space, Wall]]) (1, 1) (1, 1)
       `shouldBe` False
+
+    it "Solve hard 2D maze" $
+      isGood (Maze [[Wall, Space, Wall], [Wall, Space, Wall], [Start, Space, End]]) (0, 1) (0, 1)
+      `shouldBe` False
+
+    it "Solve harder 2D maze" $
+      isGood (Maze [[Space, Space, Space], [Start, Wall, Wall], [Space, Space, End]]) (0, 1) (0, 1)
+      `shouldBe` False
