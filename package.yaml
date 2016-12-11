@@ -1,0 +1,19 @@
+name: maze
+
+dependencies:
+  - base
+
+library:
+  exposed-modules: Maze
+  source-dirs: src/main/haskell
+  dependencies:
+  # - foo       # List here the packages you
+  # - bar       # want to use in your solution.
+
+tests:
+  test:
+    main: Tests.hs
+    source-dirs: src/test/haskell
+    dependencies:
+      - maze
+      - hspec
