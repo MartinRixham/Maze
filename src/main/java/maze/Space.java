@@ -47,11 +47,11 @@ public class Space implements MazeSquare
 
 		this.alreadyAsked = true;
 
-		int badNeighbourCount = this.getBadNeighbourCount(caller);
+		int goodNeighbourCount = this.getGoodNeighbourCount(caller);
 
 		this.alreadyAsked = false;
 
-		if (badNeighbourCount > 2)
+		if (goodNeighbourCount < 2)
 		{
 			this.isBad = true;
 
@@ -66,25 +66,25 @@ public class Space implements MazeSquare
 		return true;
 	}
 
-	private int getBadNeighbourCount(Space caller) {
+	private int getGoodNeighbourCount(Space caller) {
 
 		Coordinate coordinate = this.getCoordinate();
 
 		Collection<MazeSquare> neighbours =
 			coordinate.getNeighbours(this.mazeGrid);
 
-		int badNeighbourCount = 0;
+		int goodNeighbourCount = 0;
 
 		for (MazeSquare neighbour : neighbours)
 		{
-			if (neighbour != caller &&
-				(neighbour.alreadyAsked() || !neighbour.isGood(this)))
+			if (neighbour == caller ||
+				(!neighbour.alreadyAsked() && neighbour.isGood(this)))
 			{
-				badNeighbourCount += 1;
+				goodNeighbourCount += 1;
 			}
 		}
 
-		return badNeighbourCount;
+		return goodNeighbourCount;
 	}
 
 	private Coordinate getCoordinate()
