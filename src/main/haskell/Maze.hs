@@ -48,16 +48,20 @@ solve maze = unlines $ map (map $ solveCoordinate maze) coordinates
 --     square = getMazeSquare maze (x,y)
 --     w = width maze
 
+any2 :: [Bool] -> Bool
+any2 [] = False
+any2 (b:bs) = if b then any id bs else any2 bs
+
 isGood ::  Maze -> (Int, Int) -> (Int, Int) -> Bool
 isGood maze (x, y) (xCaller, yCaller)
---  | x < 0 || x >= length m = False
-  | y < 0 || y > w  = False
-  | square == Start = True
-  | square == End   = True
-  | square == Wall  = False
+  | not $ isInside (x,y) = False
+  | square == Start    = True
+  | square == End      = True
+  | square == Wall     = False
   | (x, y-1) == (xCaller, yCaller) = isGood maze (x,y+1) (x, y)
   | (x, y+1) == (xCaller, yCaller) = isGood maze (x,y-1) (x, y)
-  | otherwise       = isGood maze (x,y-1) (x, y) && isGood maze (x,y+1) (x, y)
+  | otherwise = any2 $ map (\p -> isGood maze p (x,y)) neighbours
   where
     square = getMazeSquare maze (x,y)
-    w = width maze
+    neighbours = filter isInside [(x, y-1), (x, y+1), (x-1, y), (x+1, y)]
+    isInside (x, y) = 0 <= x && x < height maze && 0 <= y && y < width maze
