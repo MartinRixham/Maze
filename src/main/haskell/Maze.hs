@@ -5,4 +5,6 @@ type MazeSquare = Char
 data Maze = Maze [[MazeSquare]] deriving (Show)
 
 solve :: Maze -> String
-solve (Maze m) = unlines m
+solve (Maze m) = map f $ unlines m
+  where f ' ' = 'X'
+        f c   = c

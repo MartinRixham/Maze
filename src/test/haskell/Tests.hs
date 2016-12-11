@@ -21,3 +21,7 @@ specs = describe "maze" $ do
     it "walls" $
       solve (Maze ["SE","##"])
       `shouldBe` "SE\n##\n"
+
+    it "spaces" $
+      solve (Maze ["S E"])
+      `shouldBe` "SXE\n"
