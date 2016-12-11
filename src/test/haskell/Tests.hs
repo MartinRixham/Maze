@@ -13,3 +13,7 @@ specs = describe "maze" $ do
     it "degenerate maze" $
       solve (Maze [[]])
       `shouldBe` ""
+
+    it "simple maze" $
+      solve (Maze ["SE"])
+      `shouldBe` "SE"
