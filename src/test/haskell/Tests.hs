@@ -12,8 +12,12 @@ specs = describe "maze" $ do
 
     it "degenerate maze" $
       solve (Maze [[]])
-      `shouldBe` ""
+      `shouldBe` "\n"
 
     it "simple maze" $
       solve (Maze ["SE"])
-      `shouldBe` "SE"
+      `shouldBe` "SE\n"
+
+    it "walls" $
+      solve (Maze ["SE","##"])
+      `shouldBe` "SE\n##\n"
