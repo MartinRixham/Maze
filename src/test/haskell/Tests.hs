@@ -15,37 +15,37 @@ specs = describe "maze" $ do
       `shouldBe` "\n"
 
     it "simple maze" $
-      solve (Maze ["SE"])
+      solve (Maze [[Start, End]])
       `shouldBe` "SE\n"
 
     it "walls" $
-      solve (Maze ["SE","##"])
-      `shouldBe` "SE\n##\n"
+      solve (Maze [[Start, End, Wall]])
+      `shouldBe` "SE#\n"
 
     it "spaces" $
-      solve (Maze ["S E"])
+      solve (Maze [[Start, Space, End]])
       `shouldBe` "SXE\n"
 
-    -- it "bad spaces" $
-    --   solve (Maze ["SE# "])
-    --   `shouldBe` "SE# \n"
+    it "bad spaces" $
+      solve (Maze [[Start, End, Wall, Space]])
+      `shouldBe` "SE# \n"
 
     it "Start is good" $
-      isGood (Maze ["SE"]) 0 0
+      isGood (Maze [[Start]]) (0, 0)
       `shouldBe` True
 
     it "End is good" $
-      isGood (Maze ["ES"]) 0 0
+      isGood (Maze [[End]]) (0, 0)
       `shouldBe` True
 
     it "Walls are bad" $
-      isGood (Maze ["E#S"]) 0 1
+      isGood (Maze [[Wall]]) (0, 0)
       `shouldBe` False
 
     it "Find a good space" $
-      isGood (Maze ["S E"]) 0 1
+      isGood (Maze [[Start, Space, End]]) (0, 1)
       `shouldBe` True
 
     it "Find a bad space" $
-      isGood (Maze ["SE# "]) 0 3
+      isGood (Maze [[Start, End, Wall, Space]]) (0, 3)
       `shouldBe` False
