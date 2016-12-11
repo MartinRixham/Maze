@@ -42,6 +42,18 @@ specs = describe "maze" $ do
       isGood (Maze [[Wall]]) (0, 0) (0, 0)
       `shouldBe` False
 
+    it "No End" $
+      isGood (Maze [[Space, Space, Start]]) (0, 0) (0, 0)
+      `shouldBe` False
+
+    it "No End again" $
+      isGood (Maze [[Space, Space, Start]]) (0, 1) (0, 1)
+      `shouldBe` False
+
+    it "No End again 2" $
+      isGood (Maze [[Start, Space, Space]]) (0, 1) (0, 1)
+      `shouldBe` False
+
     it "Find a good space" $
       isGood (Maze [[Start, Space, End]]) (0, 1) (0, 1)
       `shouldBe` True

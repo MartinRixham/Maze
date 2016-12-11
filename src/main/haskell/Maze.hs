@@ -36,18 +36,6 @@ solve maze = unlines $ map (map $ solveCoordinate maze) coordinates
     h = height maze
     coordinates = [[(x,y)| y <- [0..w-1]] | x <- [0..h-1]]
 
--- isGood ::  Maze -> (Int, Int) -> Bool
--- isGood maze (x, y)
--- --  | x < 0 || x >= length m = False
---   | y < 0 || y > w  = False
---   | square == Start = True
---   | square == End   = True
---   | square == Wall  = False
---   | otherwise       = isGood maze (x,y-1) && isGood maze (x,y+1)
---   where
---     square = getMazeSquare maze (x,y)
---     w = width maze
-
 any2 :: [Bool] -> Bool
 any2 [] = False
 any2 (b:bs) = if b then any id bs else any2 bs
