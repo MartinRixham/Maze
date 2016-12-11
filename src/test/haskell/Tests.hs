@@ -37,3 +37,7 @@ specs = describe "maze" $ do
     it "End is good" $
       isGood (Maze ["ES"]) 0 0
       `shouldBe` True
+
+    it "Walls are bad" $
+      isGood (Maze ["E#S"]) 0 1
+      `shouldBe` False

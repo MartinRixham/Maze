@@ -10,4 +10,8 @@ solve (Maze m) = map f $ unlines m
         f c   = c
 
 isGood ::  Maze -> Int -> Int -> Bool
-isGood (Maze m) x y = True
+isGood (Maze m) x y
+  | square == 'S' = True
+  | square == 'E' = True
+  | square == '#' = False
+  where square = (m !! x) !! y
