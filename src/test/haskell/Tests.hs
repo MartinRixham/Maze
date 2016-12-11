@@ -31,21 +31,25 @@ specs = describe "maze" $ do
       `shouldBe` "SE# \n"
 
     it "Start is good" $
-      isGood (Maze [[Start]]) (0, 0)
+      isGood (Maze [[Start]]) (0, 0) (0, 0)
       `shouldBe` True
 
     it "End is good" $
-      isGood (Maze [[End]]) (0, 0)
+      isGood (Maze [[End]]) (0, 0) (0, 0)
       `shouldBe` True
 
     it "Walls are bad" $
-      isGood (Maze [[Wall]]) (0, 0)
+      isGood (Maze [[Wall]]) (0, 0) (0, 0)
       `shouldBe` False
 
     it "Find a good space" $
-      isGood (Maze [[Start, Space, End]]) (0, 1)
+      isGood (Maze [[Start, Space, End]]) (0, 1) (0, 1)
       `shouldBe` True
 
     it "Find a bad space" $
-      isGood (Maze [[Start, End, Wall, Space]]) (0, 3)
+      isGood (Maze [[Start, End, Wall, Space]]) (0, 3) (0, 3)
       `shouldBe` False
+
+    it "Solve a big maze" $
+      isGood (Maze [[Start, Space, Space, End]]) (0, 1) (0, 1)
+      `shouldBe` True
