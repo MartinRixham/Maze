@@ -30,6 +30,10 @@ specs = describe "maze" $ do
       solve (Maze [[Start, End, Wall, Space]])
       `shouldBe` "SE# \n"
 
+    it "solve hard maze" $
+      solve (fromString "S    \n     \n    E")
+      `shouldBe` "S    \nX    \nXXXXE\n"
+
     it "Start is good" $
       isGood (Maze [[Start]]) (0, 0) (0, 0)
       `shouldBe` True
